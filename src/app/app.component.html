@@ -1,0 +1,47 @@
+<app-header></app-header>
+<main>
+  <ul id="users">
+    @for (user of users; track user.id){
+    <li>
+      <app-user [user]="user" [selected]="user.id===selectedUserId" (select)="onSelectUser($event)" />
+    </li>
+    }
+    <!--track is an angular feature that helps to identify unique items in a collection
+    that it can track changes more efficiently and re render only elments that are modified -->
+    <!--- <li>
+      <app-user
+        [user]="users[1]"
+        (select)="onSelectUser($event)"
+      />
+    </li>
+    <li>
+      <app-user
+        [user]="users[2]"
+        (select)="onSelectUser($event)"
+      />
+    </li>
+    <li>
+      <app-user
+        [user]="users[3]"
+        (select)="onSelectUser($event)"
+      />
+    </li>
+  -->
+  </ul>
+  @if (selectedUser){
+  <app-tasks [userId]="selectedUser.id" [name]="selectedUser.name"></app-tasks>
+  }
+  @else {
+  <p id="fallback">Select a user to see their tasks</p>
+  }
+  <!--without for and else we can use *ngFor and *ngIf 
+<*ngIf="selectedUser; else falback"
+<ng-template>
+  <p id="fallback">Select user</p>
+</ng-template>
+-->
+  <button id="button" (click)="onStartAddUser()">Add User</button>
+  @if(isAddNewUser){
+    <app-new-user (close)="closeDialog()"></app-new-user>
+  }
+</main>

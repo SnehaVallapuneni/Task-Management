@@ -1,0 +1,22 @@
+
+<dialog open>
+  <h2>Add User</h2>
+  <form (ngSubmit)="onSubmit()">
+    <p>
+      <label for="name">Name</label>
+      <input type="text" placeholder="Enter Name" name="name"  [(ngModel)]="enteredName">
+    </p>
+
+    <p>
+      <label for="id">Id</label>
+      <input type="text" placeholder="id" name="id"   [(ngModel)]="enteredId">
+    </p>
+
+    <p>
+      <label for="avatar">Avatar</label>
+      <input type="text" placeholder="avatar" name="avatar"  [(ngModel)]="enteredavatar">
+    </p>
+    <button type="submit">Submit</button>
+    <button type="button" (click)="onCancel()">Cancel</button>
+  </form>
+</dialog>
